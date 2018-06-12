@@ -244,7 +244,19 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
+  //use arguments
   _.extend = function(obj) {
+    //iterate over arguments except the first argument
+      //iterate over the keys in that object
+        //move key values pairs to destination object
+    //return destination object
+    
+    for (var i = 1; i < arguments.length; i++) {
+      for (var key in arguments[i]) {
+        obj[key] = arguments[i][key];
+      }
+    }
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
