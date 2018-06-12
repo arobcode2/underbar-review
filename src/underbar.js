@@ -99,6 +99,19 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    iterator = iterator || _.identity;
+    var mySet = new Set();
+    var results = []
+    
+    for (var i = 0; i < array.length; i++) {
+      if(!mySet.has(iterator(array[i]))) {
+        mySet.add(iterator(array[i]));
+        results.push(array[i]);
+      }
+    }
+    
+    return results;
+    
   };
 
 
