@@ -212,8 +212,17 @@
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
+  // _.some should evaluate to false if everything is false and true if at least 1 thing is true
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    iterator = iterator || _.identity;
+    if (_.every(collection, function(val) {
+      
+      return !iterator(val);  
+    })) {
+      return false;
+    }
+    return true;
   };
 
 
