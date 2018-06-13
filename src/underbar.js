@@ -313,7 +313,23 @@
   // _.memoize should return a function that, when called, will check if it has
   // already computed the result for the given argument and return that value
   // instead if possible.
+  //input: function add(num1, num2) {return num1 + num2;}
+  //output: 
   _.memoize = function(func) {
+    var memo = {};
+    
+    //make a new scope so that we can modify memo
+    return function() {
+      var args = [].slice.call(arguments)
+      var key = JSON.stringify(args);
+      //check to see if memo has that key
+      if (memo.hasOwnProperty(key)) {
+        return memo[key];
+      }
+      //set memo.key to value of calling the function
+      memo[key] = func.apply(this, args);
+      return memo[key];
+    }
   };
 
   // Delays a function for the given number of milliseconds, and then calls
@@ -323,6 +339,7 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    
   };
 
 
