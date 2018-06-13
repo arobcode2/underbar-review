@@ -356,7 +356,16 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
+  // [1, 2, 3] => [2, 3, 1] get a random index from original array => [0, 1, 2]
   _.shuffle = function(array) {
+    var arrCopy = array.slice();
+    var maxIndex = arrCopy.length - 1;
+    
+    while(maxIndex > 0) {
+      //select an index
+      //move the value at that index to max index
+      var i = Math.floor(Math.random() * maxIndex)
+    }
   };
 
 
